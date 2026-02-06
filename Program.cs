@@ -3,10 +3,10 @@ using System.Reflection;
 
 class Task
 {
-    private string title;
-    private string details;
-    private DateTime time;
-    private bool completed;
+    public  string title;
+    public string details;
+    public DateTime time;
+    public bool completed;
 
     public Task(string title,string details,bool completed)
     {
@@ -62,5 +62,13 @@ class User
         Task task = new Task(name, details, false);
         tasks.Add(task);
         Console.WriteLine("Task Added Successfully");
+    }
+    private void View_Task()
+    {
+        Console.Write($"{"Task",-20}{"Details",-20},{"Time",-20}{"Status"}");
+        foreach(var task in tasks)
+        {
+            Console.WriteLine($"{task.title,-20}{task.details,-20},{task.time},{(task.completed ? "Completed" : "Incomplete")}");
+        }
     }
 }
