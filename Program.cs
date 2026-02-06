@@ -18,7 +18,7 @@ class Task
 }
 class User
 {
-    List<Task> tasks;
+    List<Task> ?tasks;
     public User(List<Task> tasks)
     {
         this.tasks = tasks;
@@ -96,4 +96,15 @@ class User
         Pause();
     }
 
+}
+
+class Program
+{
+    static void Main()
+    {
+        List<Task> tasks=new List<Task>();
+        User user = new User(tasks);
+        user.Show_Menu();
+
+    }
 }
