@@ -33,23 +33,27 @@ class User
 
     public void Show_Menu()
     {
-        Console.WriteLine("========================");
-        Console.WriteLine("Task Manager");
-        Console.WriteLine("=========================");
-        Console.WriteLine("1)Add Task");
-        Console.WriteLine("2)View Tasks");
-        Console.WriteLine("3)Delete Task");
-        Console.WriteLine("4)Mark Complete");
-        Console.WriteLine("5)Exit ");
-        Console.Write("Enter your choice: ");
-        int choice = int.Parse(Console.ReadLine() ?? "0");
-        switch(choice)
+        bool running = true;
+        while (running)
         {
-            case 1: Add_Task();break;
-            case 2: View_Task();break;
-            case 3: Delete_Task();break;
-            case 4: Mark_Complete();break;
-            case 5: Environment.Exit(0);break;
+            Console.WriteLine("========================");
+            Console.WriteLine("Task Manager");
+            Console.WriteLine("=========================");
+            Console.WriteLine("1)Add Task");
+            Console.WriteLine("2)View Tasks");
+            Console.WriteLine("3)Delete Task");
+            Console.WriteLine("4)Mark Complete");
+            Console.WriteLine("5)Exit ");
+            Console.Write("Enter your choice: ");
+            int choice = int.Parse(Console.ReadLine() ?? "0");
+            switch (choice)
+            {
+                case 1: Add_Task(); break;
+                case 2: View_Task(); break;
+                case 3: Delete_Task(); break;
+                case 4: Mark_Complete(); break;
+                case 5: Environment.Exit(0); break;
+            }
         }
     }
     private void Add_Task()
@@ -67,10 +71,10 @@ class User
     private void View_Task()
     {
         Console.Clear();
-        Console.Write($"{"Task",-20}{"Details",-20},{"Time",-20}{"Status"}");
+        Console.WriteLine($"{"Task",-20}{"Details",-20},{"Time",-20}{"Status"}");
         foreach(var task in tasks)
         {
-            Console.WriteLine($"{task.title,-20}{task.details,-20},{task.time},{(task.completed ? "Completed" : "Incomplete")}");
+            Console.WriteLine($"{task.title,-20}{task.details,-20}{task.time}{(task.completed ? "Completed" : "Incomplete")}");
         }
         Pause();
     }
