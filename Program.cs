@@ -62,6 +62,7 @@ class User
         Task task = new Task(name, details, false);
         tasks.Add(task);
         Console.WriteLine("Task Added Successfully");
+        Pause();
     }
     private void View_Task()
     {
@@ -70,5 +71,17 @@ class User
         {
             Console.WriteLine($"{task.title,-20}{task.details,-20},{task.time},{(task.completed ? "Completed" : "Incomplete")}");
         }
+        Pause();
     }
+    private void Delete_Task()
+    {
+        Console.Write("Enter Task name to delete");
+        string name = Console.ReadLine() ?? "";
+        Task ?task = tasks.FirstOrDefault(u => u.title == name);
+        tasks.Remove(task);
+        Console.WriteLine("Task Deleted Successfully!");
+        Pause();
+
+    }
+
 }
