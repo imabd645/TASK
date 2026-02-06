@@ -66,6 +66,7 @@ class User
     }
     private void View_Task()
     {
+        Console.Clear();
         Console.Write($"{"Task",-20}{"Details",-20},{"Time",-20}{"Status"}");
         foreach(var task in tasks)
         {
@@ -75,6 +76,7 @@ class User
     }
     private void Delete_Task()
     {
+        Console.Clear();
         Console.Write("Enter Task name to delete");
         string name = Console.ReadLine() ?? "";
         Task ?task = tasks.FirstOrDefault(u => u.title == name);
@@ -82,6 +84,16 @@ class User
         Console.WriteLine("Task Deleted Successfully!");
         Pause();
 
+    }
+    private void Mark_Complete()
+    {
+        Console.Clear();
+        Console.Write("Enter the Task to mark complete");
+        string name = Console.ReadLine() ?? "";
+        Task? task = tasks.FirstOrDefault(u => u.title == name);
+        task.completed = true;
+        Console.WriteLine("Mark as Completed Successfully!");
+        Pause();
     }
 
 }
